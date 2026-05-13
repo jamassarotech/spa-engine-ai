@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "http://localhost:3001",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001",
     siteName: "Deal Advisor",
     title: "Deal Advisor | AI-powered buying research",
     description:

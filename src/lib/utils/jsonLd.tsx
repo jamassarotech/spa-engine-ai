@@ -9,12 +9,13 @@ import type { QueryResult } from "@/types/api";
  * Generate Organization JSON-LD
  */
 export function generateOrganizationSchema() {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Deal Advisor",
-    url: "http://localhost:3001",
-    logo: "http://localhost:3001/logo.png",
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
     description:
       "AI-powered buying research assistant for honest product reviews",
     sameAs: [
@@ -29,18 +30,19 @@ export function generateOrganizationSchema() {
  * Generate WebSite JSON-LD with SearchAction
  */
 export function generateWebsiteSchema() {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Deal Advisor",
-    url: "http://localhost:3001",
+    url: baseUrl,
     description:
       "AI-powered buying research assistant for honest product reviews",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "http://localhost:3001/q/{search_term_string}",
+        urlTemplate: `${baseUrl}/q/{search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
@@ -51,7 +53,7 @@ export function generateWebsiteSchema() {
  * Generate Article JSON-LD for Query Pages
  */
 export function generateArticleSchema(data: QueryResult, slug: string) {
-  const baseUrl = "http://localhost:3001";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
 
   return {
     "@context": "https://schema.org",
@@ -130,7 +132,7 @@ export function generateReviewSchema(data: QueryResult) {
  * Generate BreadcrumbList JSON-LD
  */
 export function generateBreadcrumbSchema(title: string, slug: string) {
-  const baseUrl = "http://localhost:3001";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
 
   return {
     "@context": "https://schema.org",
