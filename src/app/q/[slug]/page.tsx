@@ -10,6 +10,12 @@ import { ConsList } from "@/components/query/ConsList";
 import { WarningsList } from "@/components/query/WarningsList";
 import { QuotesSection } from "@/components/query/QuotesSection";
 import { SourcesSection } from "@/components/query/SourcesSection";
+import {
+  JsonLd,
+  generateArticleSchema,
+  generateReviewSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/utils/jsonLd";
 
 interface PageProps {
   params: {
@@ -75,8 +81,13 @@ export default async function QueryPage({ params }: PageProps) {
 
   return (
     <>
+      {/* Structured Data for SEO */}
+      <JsonLd data={generateArticleSchema(data, slug)} />
+      <JsonLd data={generateReviewSchema(data)} />
+      <JsonLd data={generateBreadcrumbSchema(summary.title, slug)} />
+
       <Header minimal />
-      <main className="min-h-screen bg-background py-8">
+      <main id="main-content" className="min-h-screen bg-background py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Query Header */}
           <QueryHeader

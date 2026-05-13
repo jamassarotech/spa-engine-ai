@@ -14,7 +14,7 @@ export default function Loading() {
   return (
     <>
       <Header minimal />
-      <main className="min-h-screen bg-background py-8">
+      <main id="main-content" className="min-h-screen bg-background py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Query Header Skeleton */}
           <QueryHeaderSkeleton />

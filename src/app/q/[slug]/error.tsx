@@ -22,7 +22,10 @@ export default function Error({
   return (
     <>
       <Header minimal />
-      <main className="min-h-screen bg-background flex items-center justify-center px-4">
+      <main
+        id="main-content"
+        className="min-h-screen bg-background flex items-center justify-center px-4"
+      >
         <div className="max-w-md w-full text-center">
           {/* Error Icon */}
           <div className="mb-6 flex justify-center">

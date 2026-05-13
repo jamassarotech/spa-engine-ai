@@ -9,7 +9,10 @@ export default function NotFound() {
   return (
     <>
       <Header minimal />
-      <main className="min-h-screen bg-background flex items-center justify-center px-4">
+      <main
+        id="main-content"
+        className="min-h-screen bg-background flex items-center justify-center px-4"
+      >
         <div className="max-w-md w-full text-center">
           {/* 404 Icon */}
           <div className="mb-6 flex justify-center">
