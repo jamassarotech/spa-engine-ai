@@ -1,15 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { inter } from "@/styles/fonts";
-import { SkipToContent } from "@/lib/utils/accessibility";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "AI Research | Honest research for informed decisions",
-    template: "%s | AI Research",
+    default: "Deal Advisor | AI-powered buying research",
+    template: "%s | Deal Advisor",
   },
   description:
-    "AI-powered buying research search engine. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
+    "AI-powered buying research assistant. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
   keywords: [
     "product research",
     "buying guide",
@@ -20,9 +19,9 @@ export const metadata: Metadata = {
     "YouTube reviews",
     "Reddit discussions",
   ],
-  authors: [{ name: "AI Research" }],
-  creator: "AI Research",
-  publisher: "AI Research",
+  authors: [{ name: "Deal Advisor" }],
+  creator: "Deal Advisor",
+  publisher: "Deal Advisor",
   robots: {
     index: true,
     follow: true,
@@ -38,16 +37,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "http://localhost:3001",
-    siteName: "AI Research",
-    title: "AI Research | Honest research for informed decisions",
+    siteName: "Deal Advisor",
+    title: "Deal Advisor | AI-powered buying research",
     description:
-      "AI-powered buying research search engine. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
+      "AI-powered buying research assistant. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Research | Honest research for informed decisions",
+    title: "Deal Advisor | AI-powered buying research",
     description:
-      "AI-powered buying research search engine. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
+      "AI-powered buying research assistant. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
     creator: "@airesearch",
   },
   verification: {
@@ -70,10 +69,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className={inter.className}>
-        <SkipToContent />
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

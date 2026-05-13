@@ -1,4 +1,5 @@
 import { SearchHero } from "@/components/home/SearchHero";
+import { Header } from "@/components/layout/Header";
 import {
   JsonLd,
   generateOrganizationSchema,
@@ -12,12 +13,16 @@ export default function HomePage() {
       <JsonLd data={generateOrganizationSchema()} />
       <JsonLd data={generateWebsiteSchema()} />
 
-      <main
-        id="main-content"
-        className="min-h-screen flex flex-col items-center justify-center"
-      >
-        <SearchHero />
-      </main>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+
+        <main
+          id="main-content"
+          className="flex-1 flex flex-col items-center justify-center"
+        >
+          <SearchHero />
+        </main>
+      </div>
     </>
   );
 }

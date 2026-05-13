@@ -13,15 +13,15 @@ export function Header({ minimal = false }: HeaderProps) {
           href="/"
           className="text-xl font-semibold text-primary hover:text-accent transition-colors"
         >
-          Research
+          Deal Advisor
         </Link>
 
-        {/* Optional: Add navigation items here in the future */}
-        {!minimal && (
-          <nav className="hidden md:flex items-center gap-6">
-            {/* Future navigation items */}
-          </nav>
-        )}
+        {/* Beta Badge */}
+        <div className="flex items-center gap-3">
+          <span className="px-3 py-1 bg-accent/10 text-accent text-sm font-medium rounded-full border border-accent/20">
+            Beta
+          </span>
+        </div>
       </div>
     </header>
   );

@@ -7,6 +7,7 @@ import type { APIError } from "@/types/api";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 const API_TIMEOUT = parseInt(process.env.API_TIMEOUT || "10000", 10);
+const API_POST_TIMEOUT = parseInt(process.env.API_POST_TIMEOUT || "60000", 10); // 60 seconds for AI processing
 
 /**
  * Custom API Error class
@@ -54,17 +55,27 @@ async function fetchWithTimeout(
 export async function apiClient<T>(
   endpoint: string,
   options: RequestInit = {},
+  timeout?: number,
 ): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
 
+  // Debug logging
+  if (process.env.DEBUG_API === "true") {
+    console.log(`[API] Fetching: ${url}`);
+  }
+
   try {
-    const response = await fetchWithTimeout(url, {
-      headers: {
-        "Content-Type": "application/json",
-        ...options.headers,
+    const response = await fetchWithTimeout(
+      url,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          ...options.headers,
+        },
+        ...options,
       },
-      ...options,
-    });
+      timeout,
+    );
 
     // Handle HTTP errors
     if (!response.ok) {
@@ -77,6 +88,10 @@ export async function apiClient<T>(
         // If parsing error response fails, use default message
       }
 
+      if (process.env.DEBUG_API === "true") {
+        console.error(`[API] Error: ${errorMessage}`);
+      }
+
       throw new APIClientError(errorMessage, response.status);
     }
 
@@ -84,6 +99,14 @@ export async function apiClient<T>(
     const data = await response.json();
     return data as T;
   } catch (error) {
+    // Log errors in development
+    if (
+      process.env.DEBUG_API === "true" ||
+      process.env.NODE_ENV === "development"
+    ) {
+      console.error(`[API] Request failed for ${url}:`, error);
+    }
+
     // Re-throw API client errors
     if (error instanceof APIClientError) {
       throw error;
@@ -116,11 +139,16 @@ export async function apiGet<T>(
 }
 
 /**
- * POST request
+ * POST request with extended timeout for AI processing
  */
 export async function apiPost<T>(endpoint: string, data: unknown): Promise<T> {
-  return apiClient<T>(endpoint, {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  return apiClient<T>(
+    endpoint,
+    {
+      method: "POST",
+      body: JSON.stringify(data),
+      keepalive: true, // Prevent request cancellation during navigation
+    },
+    API_POST_TIMEOUT, // Use longer timeout for POST requests
+  );
 }

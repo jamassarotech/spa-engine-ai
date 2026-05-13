@@ -11,7 +11,7 @@ export function SkipToContent() {
   return (
     <a
       href="#main-content"
-      className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-lg"
+      className="fixed -top-20 left-4 z-50 px-4 py-2 bg-accent text-white rounded-lg font-medium shadow-lg focus:top-4 transition-all"
     >
       Skip to main content
     </a>

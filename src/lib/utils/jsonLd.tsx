@@ -12,11 +12,11 @@ export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "AI Research",
+    name: "Deal Advisor",
     url: "http://localhost:3001",
     logo: "http://localhost:3001/logo.png",
     description:
-      "AI-powered buying research search engine for honest product reviews",
+      "AI-powered buying research assistant for honest product reviews",
     sameAs: [
       // Add social media links when available
       // 'https://twitter.com/airesearch',
@@ -32,10 +32,10 @@ export function generateWebsiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "AI Research",
+    name: "Deal Advisor",
     url: "http://localhost:3001",
     description:
-      "AI-powered buying research search engine for honest product reviews",
+      "AI-powered buying research assistant for honest product reviews",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -63,11 +63,11 @@ export function generateArticleSchema(data: QueryResult, slug: string) {
     dateModified: data.metadata.lastUpdated,
     author: {
       "@type": "Organization",
-      name: "AI Research",
+      name: "Deal Advisor",
     },
     publisher: {
       "@type": "Organization",
-      name: "AI Research",
+      name: "Deal Advisor",
       logo: {
         "@type": "ImageObject",
         url: `${baseUrl}/logo.png`,
