@@ -81,6 +81,7 @@ npm start
 ### Manual Deployment
 
 1. **Install Vercel CLI** (optional)
+
    ```bash
    npm i -g vercel
    ```
