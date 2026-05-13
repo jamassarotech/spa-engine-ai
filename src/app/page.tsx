@@ -5,11 +5,11 @@ export default function HomePage() {
         <h1 className="text-hero font-bold text-primary mb-12">
           Honest research for informed decisions.
         </h1>
-        
+
         <div className="bg-background border-2 border-border rounded-2xl p-4 shadow-card max-w-3xl mx-auto">
           <div className="flex items-center gap-4">
             <div className="flex-1">
-              <input 
+              <input
                 type="text"
                 placeholder="What are you looking for?"
                 className="w-full text-lg px-4 py-3 outline-none"
@@ -20,11 +20,11 @@ export default function HomePage() {
             </button>
           </div>
         </div>
-        
+
         <div className="mt-6 text-secondary text-base">
           Phase 1 Complete: Next.js + TypeScript + Tailwind + Inter Font ✓
         </div>
       </div>
     </main>
-  )
+  );
 }
