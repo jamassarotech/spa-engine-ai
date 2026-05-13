@@ -1,15 +1,15 @@
-import { formatDate } from '@/lib/utils/formatDate'
-import { formatRedditScore } from '@/lib/utils/formatScore'
-import type { RedditSourceProps } from '@/types/components'
+import { formatDate } from "@/lib/utils/formatDate";
+import { formatRedditScore } from "@/lib/utils/formatScore";
+import type { RedditSourceProps } from "@/types/components";
 
 // Extract subreddit from Reddit URL
 function getSubreddit(url: string): string | null {
-  const match = url.match(/reddit\.com\/r\/([^/]+)/)
-  return match ? `r/${match[1]}` : null
+  const match = url.match(/reddit\.com\/r\/([^/]+)/);
+  return match ? `r/${match[1]}` : null;
 }
 
 export function RedditSource({ source }: RedditSourceProps) {
-  const subreddit = getSubreddit(source.url)
+  const subreddit = getSubreddit(source.url);
 
   return (
     <a
@@ -56,5 +56,5 @@ export function RedditSource({ source }: RedditSourceProps) {
         <span>{formatDate(source.publishedAt)}</span>
       </div>
     </a>
-  )
+  );
 }

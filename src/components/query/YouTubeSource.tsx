@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import { formatDate } from '@/lib/utils/formatDate'
-import { formatYouTubeScore } from '@/lib/utils/formatScore'
-import type { YouTubeSourceProps } from '@/types/components'
+import Image from "next/image";
+import { formatDate } from "@/lib/utils/formatDate";
+import { formatYouTubeScore } from "@/lib/utils/formatScore";
+import type { YouTubeSourceProps } from "@/types/components";
 
 // Extract YouTube video ID from URL
 function getYouTubeVideoId(url: string): string | null {
@@ -9,20 +9,20 @@ function getYouTubeVideoId(url: string): string | null {
     /(?:youtube\.com\/watch\?v=)([^&]+)/,
     /(?:youtu\.be\/)([^?]+)/,
     /(?:youtube\.com\/embed\/)([^?]+)/,
-  ]
+  ];
 
   for (const pattern of patterns) {
-    const match = url.match(pattern)
-    if (match) return match[1]
+    const match = url.match(pattern);
+    if (match) return match[1];
   }
-  return null
+  return null;
 }
 
 export function YouTubeSource({ source }: YouTubeSourceProps) {
-  const videoId = getYouTubeVideoId(source.url)
+  const videoId = getYouTubeVideoId(source.url);
   const thumbnailUrl = videoId
     ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
-    : '/placeholder-youtube.jpg'
+    : "/placeholder-youtube.jpg";
 
   return (
     <a
@@ -71,5 +71,5 @@ export function YouTubeSource({ source }: YouTubeSourceProps) {
         </div>
       </div>
     </a>
-  )
+  );
 }

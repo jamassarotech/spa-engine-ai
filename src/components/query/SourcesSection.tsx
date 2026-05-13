@@ -1,15 +1,15 @@
-import { YouTubeSource } from './YouTubeSource'
-import { RedditSource } from './RedditSource'
-import type { SourcesSectionProps } from '@/types/components'
+import { YouTubeSource } from "./YouTubeSource";
+import { RedditSource } from "./RedditSource";
+import type { SourcesSectionProps } from "@/types/components";
 
 export function SourcesSection({
   youtubeData,
   redditData,
 }: SourcesSectionProps) {
-  const hasYouTube = youtubeData.length > 0
-  const hasReddit = redditData.length > 0
+  const hasYouTube = youtubeData.length > 0;
+  const hasReddit = redditData.length > 0;
 
-  if (!hasYouTube && !hasReddit) return null
+  if (!hasYouTube && !hasReddit) return null;
 
   return (
     <section className="mb-12">
@@ -54,5 +54,5 @@ export function SourcesSection({
         </div>
       )}
     </section>
-  )
+  );
 }

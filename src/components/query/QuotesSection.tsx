@@ -1,7 +1,7 @@
-import type { QuotesSectionProps } from '@/types/components'
+import type { QuotesSectionProps } from "@/types/components";
 
 export function QuotesSection({ quotes }: QuotesSectionProps) {
-  if (quotes.length === 0) return null
+  if (quotes.length === 0) return null;
 
   return (
     <section className="mb-12">
@@ -41,5 +41,5 @@ export function QuotesSection({ quotes }: QuotesSectionProps) {
         ))}
       </div>
     </section>
-  )
+  );
 }
