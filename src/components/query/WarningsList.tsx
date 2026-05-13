@@ -1,14 +1,14 @@
-import { Badge } from '@/components/ui/Badge'
-import type { WarningsListProps } from '@/types/components'
+import { Badge } from "@/components/ui/Badge";
+import type { WarningsListProps } from "@/types/components";
 
 const severityConfig = {
-  low: { variant: 'info' as const, label: 'Note' },
-  medium: { variant: 'warning' as const, label: 'Warning' },
-  high: { variant: 'danger' as const, label: 'Important' },
-}
+  low: { variant: "info" as const, label: "Note" },
+  medium: { variant: "warning" as const, label: "Warning" },
+  high: { variant: "danger" as const, label: "Important" },
+};
 
 export function WarningsList({ warnings }: WarningsListProps) {
-  if (warnings.length === 0) return null
+  if (warnings.length === 0) return null;
 
   return (
     <section className="mb-12">
@@ -23,7 +23,7 @@ export function WarningsList({ warnings }: WarningsListProps) {
       {/* Warnings List */}
       <ul className="space-y-4">
         {warnings.map((warning, index) => {
-          const config = severityConfig[warning.severity]
+          const config = severityConfig[warning.severity];
           return (
             <li key={index} className="flex gap-3">
               {/* Bullet */}
@@ -39,9 +39,9 @@ export function WarningsList({ warnings }: WarningsListProps) {
                 </div>
               </div>
             </li>
-          )
+          );
         })}
       </ul>
     </section>
-  )
+  );
 }

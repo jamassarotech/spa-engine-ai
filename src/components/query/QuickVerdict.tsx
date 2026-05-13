@@ -1,4 +1,4 @@
-import type { QuickVerdictProps } from '@/types/components'
+import type { QuickVerdictProps } from "@/types/components";
 
 export function QuickVerdict({ verdict }: QuickVerdictProps) {
   return (
@@ -11,5 +11,5 @@ export function QuickVerdict({ verdict }: QuickVerdictProps) {
       {/* Verdict Text */}
       <p className="text-body-large text-primary leading-relaxed">{verdict}</p>
     </div>
-  )
+  );
 }

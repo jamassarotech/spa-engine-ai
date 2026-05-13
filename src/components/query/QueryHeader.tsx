@@ -1,6 +1,6 @@
-import { formatLastUpdated } from '@/lib/utils/formatDate'
-import { TrustIndicator } from '@/components/shared/TrustIndicator'
-import type { QueryHeaderProps } from '@/types/components'
+import { formatLastUpdated } from "@/lib/utils/formatDate";
+import { TrustIndicator } from "@/components/shared/TrustIndicator";
+import type { QueryHeaderProps } from "@/types/components";
 
 export function QueryHeader({
   title,
@@ -33,5 +33,5 @@ export function QueryHeader({
         <span>{sourceCount} sources analyzed</span>
       </div>
     </div>
-  )
+  );
 }

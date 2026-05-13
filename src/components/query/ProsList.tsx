@@ -1,7 +1,7 @@
-import type { ProsListProps } from '@/types/components'
+import type { ProsListProps } from "@/types/components";
 
 export function ProsList({ pros }: ProsListProps) {
-  if (pros.length === 0) return null
+  if (pros.length === 0) return null;
 
   return (
     <section className="mb-12">
@@ -20,7 +20,9 @@ export function ProsList({ pros }: ProsListProps) {
 
             {/* Content */}
             <div className="flex-1">
-              <p className="text-base text-primary leading-relaxed">{pro.point}</p>
+              <p className="text-base text-primary leading-relaxed">
+                {pro.point}
+              </p>
               {pro.sources.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-2">
                   {pro.sources.slice(0, 3).map((source, idx) => (
@@ -41,5 +43,5 @@ export function ProsList({ pros }: ProsListProps) {
         ))}
       </ul>
     </section>
-  )
+  );
 }

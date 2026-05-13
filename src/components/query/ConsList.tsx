@@ -1,7 +1,7 @@
-import type { ConsListProps } from '@/types/components'
+import type { ConsListProps } from "@/types/components";
 
 export function ConsList({ cons }: ConsListProps) {
-  if (cons.length === 0) return null
+  if (cons.length === 0) return null;
 
   return (
     <section className="mb-12">
@@ -20,7 +20,9 @@ export function ConsList({ cons }: ConsListProps) {
 
             {/* Content */}
             <div className="flex-1">
-              <p className="text-base text-primary leading-relaxed">{con.point}</p>
+              <p className="text-base text-primary leading-relaxed">
+                {con.point}
+              </p>
               {con.sources.length > 0 && (
                 <div className="mt-2 flex flex-wrap gap-2">
                   {con.sources.slice(0, 3).map((source, idx) => (
@@ -41,5 +43,5 @@ export function ConsList({ cons }: ConsListProps) {
         ))}
       </ul>
     </section>
-  )
+  );
 }
