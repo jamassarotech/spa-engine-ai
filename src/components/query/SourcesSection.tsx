@@ -1,0 +1,58 @@
+import { YouTubeSource } from './YouTubeSource'
+import { RedditSource } from './RedditSource'
+import type { SourcesSectionProps } from '@/types/components'
+
+export function SourcesSection({
+  youtubeData,
+  redditData,
+}: SourcesSectionProps) {
+  const hasYouTube = youtubeData.length > 0
+  const hasReddit = redditData.length > 0
+
+  if (!hasYouTube && !hasReddit) return null
+
+  return (
+    <section className="mb-12">
+      {/* Section Header */}
+      <h2 className="text-section-title font-semibold text-primary mb-6">
+        Sources
+      </h2>
+
+      {/* YouTube Sources */}
+      {hasYouTube && (
+        <div className="mb-8">
+          <h3 className="text-lg font-medium text-primary mb-4 flex items-center gap-2">
+            <span className="text-red-600">▶</span>
+            YouTube Videos
+            <span className="text-sm font-normal text-secondary">
+              ({youtubeData.length})
+            </span>
+          </h3>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {youtubeData.map((source, index) => (
+              <YouTubeSource key={index} source={source} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Reddit Sources */}
+      {hasReddit && (
+        <div>
+          <h3 className="text-lg font-medium text-primary mb-4 flex items-center gap-2">
+            <span className="text-orange-500">●</span>
+            Reddit Discussions
+            <span className="text-sm font-normal text-secondary">
+              ({redditData.length})
+            </span>
+          </h3>
+          <div className="grid gap-4 md:grid-cols-2">
+            {redditData.map((source, index) => (
+              <RedditSource key={index} source={source} />
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  )
+}
