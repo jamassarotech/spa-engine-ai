@@ -1,22 +1,25 @@
-import { cn } from '@/lib/utils/cn'
+import { cn } from "@/lib/utils/cn";
 
 interface SkeletonProps {
-  className?: string
-  variant?: 'text' | 'rectangular' | 'circular'
+  className?: string;
+  variant?: "text" | "rectangular" | "circular";
 }
 
-export function Skeleton({ className, variant = 'rectangular' }: SkeletonProps) {
+export function Skeleton({
+  className,
+  variant = "rectangular",
+}: SkeletonProps) {
   return (
     <div
       className={cn(
-        'animate-pulse bg-border-light',
-        variant === 'text' && 'h-4 rounded',
-        variant === 'rectangular' && 'rounded-lg',
-        variant === 'circular' && 'rounded-full',
-        className
+        "animate-pulse bg-border-light",
+        variant === "text" && "h-4 rounded",
+        variant === "rectangular" && "rounded-lg",
+        variant === "circular" && "rounded-full",
+        className,
       )}
     />
-  )
+  );
 }
 
 /**
@@ -28,7 +31,7 @@ export function QueryHeaderSkeleton() {
       <Skeleton className="h-10 w-3/4" variant="text" />
       <Skeleton className="h-4 w-48" variant="text" />
     </div>
-  )
+  );
 }
 
 /**
@@ -42,7 +45,7 @@ export function VerdictSkeleton() {
       <Skeleton className="h-5 w-full" variant="text" />
       <Skeleton className="h-5 w-4/5" variant="text" />
     </div>
-  )
+  );
 }
 
 /**
@@ -58,7 +61,7 @@ export function ListItemSkeleton({ count = 3 }: { count?: number }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
 /**
@@ -71,5 +74,5 @@ export function SourceCardSkeleton() {
       <Skeleton className="h-5 w-full" variant="text" />
       <Skeleton className="h-4 w-32" variant="text" />
     </div>
-  )
+  );
 }

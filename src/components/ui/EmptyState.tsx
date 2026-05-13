@@ -1,4 +1,4 @@
-import type { EmptyStateProps } from '@/types/components'
+import type { EmptyStateProps } from "@/types/components";
 
 export function EmptyState({ title, message, action }: EmptyStateProps) {
   return (
@@ -37,5 +37,5 @@ export function EmptyState({ title, message, action }: EmptyStateProps) {
         </button>
       )}
     </div>
-  )
+  );
 }
