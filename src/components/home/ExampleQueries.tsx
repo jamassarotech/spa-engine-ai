@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import { useRouter } from 'next/navigation'
-import { slugify } from '@/lib/utils/slugify'
-import { EXAMPLE_QUERIES } from '@/lib/constants/exampleQueries'
+import { useRouter } from "next/navigation";
+import { slugify } from "@/lib/utils/slugify";
+import { EXAMPLE_QUERIES } from "@/lib/constants/exampleQueries";
 
 export function ExampleQueries() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleQueryClick = (query: string) => {
-    const slug = slugify(query)
-    router.push(`/q/${slug}`)
-  }
+    const slug = slugify(query);
+    router.push(`/q/${slug}`);
+  };
 
   return (
     <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -25,5 +25,5 @@ export function ExampleQueries() {
         </button>
       ))}
     </div>
-  )
+  );
 }

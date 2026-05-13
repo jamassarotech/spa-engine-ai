@@ -1,33 +1,33 @@
-'use client'
+"use client";
 
-import { useState, FormEvent } from 'react'
-import { useRouter } from 'next/navigation'
-import { slugify } from '@/lib/utils/slugify'
+import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { slugify } from "@/lib/utils/slugify";
 
 interface SearchBarProps {
-  placeholder?: string
-  defaultValue?: string
-  autoFocus?: boolean
-  className?: string
+  placeholder?: string;
+  defaultValue?: string;
+  autoFocus?: boolean;
+  className?: string;
 }
 
 export function SearchBar({
-  placeholder = 'What are you looking for?',
-  defaultValue = '',
+  placeholder = "What are you looking for?",
+  defaultValue = "",
   autoFocus = false,
-  className = '',
+  className = "",
 }: SearchBarProps) {
-  const [query, setQuery] = useState(defaultValue)
-  const router = useRouter()
+  const [query, setQuery] = useState(defaultValue);
+  const router = useRouter();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!query.trim()) return
+    if (!query.trim()) return;
 
-    const slug = slugify(query.trim())
-    router.push(`/q/${slug}`)
-  }
+    const slug = slugify(query.trim());
+    router.push(`/q/${slug}`);
+  };
 
   return (
     <form onSubmit={handleSubmit} className={className}>
@@ -70,5 +70,5 @@ export function SearchBar({
         </button>
       </div>
     </form>
-  )
+  );
 }

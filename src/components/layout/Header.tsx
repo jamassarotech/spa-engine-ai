@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 interface HeaderProps {
-  minimal?: boolean
+  minimal?: boolean;
 }
 
 export function Header({ minimal = false }: HeaderProps) {
@@ -24,5 +24,5 @@ export function Header({ minimal = false }: HeaderProps) {
         )}
       </div>
     </header>
-  )
+  );
 }

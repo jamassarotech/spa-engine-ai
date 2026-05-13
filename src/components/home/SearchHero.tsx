@@ -1,5 +1,5 @@
-import { SearchBar } from '@/components/search/SearchBar'
-import { ExampleQueries } from './ExampleQueries'
+import { SearchBar } from "@/components/search/SearchBar";
+import { ExampleQueries } from "./ExampleQueries";
 
 export function SearchHero() {
   return (
@@ -17,5 +17,5 @@ export function SearchHero() {
       {/* Example Queries */}
       <ExampleQueries />
     </div>
-  )
+  );
 }
