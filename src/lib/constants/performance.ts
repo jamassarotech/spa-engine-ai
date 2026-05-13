@@ -17,7 +17,7 @@ export const API_PERFORMANCE = {
   // Retry configuration
   MAX_RETRIES: 3,
   RETRY_DELAY: 1000, // 1 second
-} as const
+} as const;
 
 /**
  * Image Loading Configuration
@@ -30,13 +30,13 @@ export const IMAGE_CONFIG = {
 
   // Blur placeholder
   BLUR_DATA_URL:
-    'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNGM0Y0RjYiLz48L3N2Zz4=',
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNGM0Y0RjYiLz48L3N2Zz4=",
 
   // Loading priorities
   PRIORITY_HERO: true,
   PRIORITY_ABOVE_FOLD: true,
   PRIORITY_DEFAULT: false,
-} as const
+} as const;
 
 /**
  * Animation Performance Settings
@@ -51,7 +51,7 @@ export const ANIMATION_CONFIG = {
   DEBOUNCE_SEARCH: 300,
   THROTTLE_SCROLL: 100,
   THROTTLE_RESIZE: 200,
-} as const
+} as const;
 
 /**
  * UI Performance Settings
@@ -67,5 +67,5 @@ export const UI_CONFIG = {
 
   // Intersection observer
   LAZY_LOAD_THRESHOLD: 0.1,
-  LAZY_LOAD_ROOT_MARGIN: '50px',
-} as const
+  LAZY_LOAD_ROOT_MARGIN: "50px",
+} as const;

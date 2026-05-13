@@ -5,7 +5,7 @@
 
 import type { APIError } from "@/types/api";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 const API_TIMEOUT = parseInt(process.env.API_TIMEOUT || "10000", 10);
 
 /**
