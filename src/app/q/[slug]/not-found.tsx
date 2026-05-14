@@ -38,8 +38,8 @@ export default function NotFound() {
             Query Not Found
           </h1>
           <p className="text-base text-secondary mb-8">
-            We couldn&apos;t find results for this query. Try searching for something
-            else.
+            We couldn&apos;t find results for this query. Try searching for
+            something else.
           </p>
 
           {/* Action Button */}
