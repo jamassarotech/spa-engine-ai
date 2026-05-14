@@ -7,7 +7,7 @@ export function QuotesSection({ quotes }: QuotesSectionProps) {
     <section className="mb-12">
       {/* Section Header */}
       <div className="flex items-center gap-2 mb-6">
-        <span className="text-secondary text-xl">"</span>
+        <span className="text-secondary text-xl">&quot;</span>
         <h2 className="text-section-title font-semibold text-primary">
           Notable Quotes
         </h2>
@@ -22,7 +22,7 @@ export function QuotesSection({ quotes }: QuotesSectionProps) {
           >
             {/* Quote Text */}
             <p className="text-base text-primary leading-relaxed mb-4 italic">
-              "{quote.text}"
+              &quot;{quote.text}&quot;
             </p>
 
             {/* Attribution */}
