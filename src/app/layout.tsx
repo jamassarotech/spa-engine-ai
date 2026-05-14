@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Suspense } from "react";
 import { inter } from "@/styles/fonts";
 import { AnalyticsTracker } from "@/components/shared/AnalyticsTracker";
 import "./globals.css";
@@ -77,7 +78,11 @@ export default function RootLayout({
         {children}
 
         {/* Analytics Tracker - tracks client-side navigation */}
-        {GA_ID && <AnalyticsTracker />}
+        {GA_ID && (
+          <Suspense fallback={null}>
+            <AnalyticsTracker />
+          </Suspense>
+        )}
 
         {/* Google Analytics */}
         {GA_ID && (
