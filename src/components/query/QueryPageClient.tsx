@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createQuery } from "@/lib/api/queries";
 import { deslugify } from "@/lib/utils/slugify";
+import { trackSearchComplete, trackError } from "@/lib/utils/analytics";
 import { SearchProgressAnimation } from "./SearchProgressAnimation";
 import { QueryHeader } from "./QueryHeader";
 import { QuickVerdict } from "./QuickVerdict";
@@ -31,6 +32,8 @@ export function QueryPageClient({ slug, initialData }: QueryPageClientProps) {
   useEffect(() => {
     // If it's a fresh search and we don't have data, fetch it
     if (isFreshSearch && !data) {
+      const startTime = Date.now();
+
       const fetchData = async () => {
         try {
           const queryText = deslugify(slug);
@@ -38,15 +41,25 @@ export function QueryPageClient({ slug, initialData }: QueryPageClientProps) {
           setData(result);
           setIsLoading(false);
 
+          // Track search completion with duration
+          const duration = Date.now() - startTime;
+          trackSearchComplete(queryText, duration);
+
           // Remove the 'fresh' param from URL after data is loaded
           router.replace(`/q/${slug}`, { scroll: false });
         } catch (err) {
-          setError(
+          const errorMessage =
             err instanceof Error
               ? err.message
-              : "Failed to fetch search results",
-          );
+              : "Failed to fetch search results";
+          setError(errorMessage);
           setIsLoading(false);
+
+          // Track error
+          trackError(errorMessage, {
+            slug,
+            query: deslugify(slug),
+          });
         }
       };
 

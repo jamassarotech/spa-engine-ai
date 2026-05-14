@@ -1,5 +1,8 @@
+"use client";
+
 import { formatDate } from "@/lib/utils/formatDate";
 import { formatRedditScore } from "@/lib/utils/formatScore";
+import { trackSourceClick } from "@/lib/utils/analytics";
 import type { RedditSourceProps } from "@/types/components";
 
 // Extract subreddit from Reddit URL
@@ -15,11 +18,16 @@ export function RedditSource({ source }: RedditSourceProps) {
     ? source.author.slice(2)
     : source.author;
 
+  const handleClick = () => {
+    trackSourceClick("reddit", source.url);
+  };
+
   return (
     <a
       href={source.url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="group block bg-white border border-border rounded-xl p-4 hover:border-accent hover:shadow-card-hover transition-all h-full"
     >
       {/* Header with Reddit Icon */}

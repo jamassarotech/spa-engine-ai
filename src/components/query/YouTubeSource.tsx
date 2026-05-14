@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { formatDate } from "@/lib/utils/formatDate";
 import { formatYouTubeScore } from "@/lib/utils/formatScore";
+import { trackSourceClick } from "@/lib/utils/analytics";
 import type { YouTubeSourceProps } from "@/types/components";
 
 // Extract YouTube video ID from URL
@@ -24,11 +27,16 @@ export function YouTubeSource({ source }: YouTubeSourceProps) {
     ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
     : "/placeholder-youtube.jpg";
 
+  const handleClick = () => {
+    trackSourceClick("youtube", source.url);
+  };
+
   return (
     <a
       href={source.url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="group block bg-white border border-border rounded-xl overflow-hidden hover:border-accent hover:shadow-card-hover transition-all"
     >
       {/* Thumbnail */}

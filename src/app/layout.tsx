@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { inter } from "@/styles/fonts";
+import { AnalyticsTracker } from "@/components/shared/AnalyticsTracker";
 import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -74,6 +75,9 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className={inter.className}>
         {children}
+
+        {/* Analytics Tracker - tracks client-side navigation */}
+        {GA_ID && <AnalyticsTracker />}
 
         {/* Google Analytics */}
         {GA_ID && (

@@ -4,6 +4,7 @@ import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { slugify } from "@/lib/utils/slugify";
 import { createQuery } from "@/lib/api/queries";
+import { trackSearchStart } from "@/lib/utils/analytics";
 
 interface SearchBarProps {
   placeholder?: string;
@@ -33,6 +34,9 @@ export function SearchBar({
 
     setIsLoading(true);
     setError(null);
+
+    // Track search start
+    trackSearchStart(trimmedQuery);
 
     // Navigate immediately to show loading animation
     // The detail page will handle the API call
