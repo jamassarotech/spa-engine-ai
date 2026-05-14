@@ -34,20 +34,9 @@ export function SearchBar({
     setIsLoading(true);
     setError(null);
 
-    try {
-      // Create the query in the backend and wait for it to complete
-      const result = await createQuery(trimmedQuery);
-      
-      // Only navigate after the query is successfully created
-      if (result) {
-        router.push(`/q/${slug}`);
-      }
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Failed to create search query",
-      );
-      setIsLoading(false);
-    }
+    // Navigate immediately to show loading animation
+    // The detail page will handle the API call
+    router.push(`/q/${slug}?fresh=true`);
   };
 
   return (

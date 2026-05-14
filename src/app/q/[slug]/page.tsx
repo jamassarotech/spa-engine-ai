@@ -10,6 +10,7 @@ import { ConsList } from "@/components/query/ConsList";
 import { WarningsList } from "@/components/query/WarningsList";
 import { QuotesSection } from "@/components/query/QuotesSection";
 import { SourcesSection } from "@/components/query/SourcesSection";
+import { QueryPageClient } from "@/components/query/QueryPageClient";
 import {
   JsonLd,
   generateArticleSchema,
@@ -20,6 +21,9 @@ import {
 interface PageProps {
   params: {
     slug: string;
+  };
+  searchParams: {
+    fresh?: string;
   };
 }
 
@@ -68,8 +72,23 @@ export async function generateMetadata({
 /**
  * Dynamic Query Results Page (Server Component)
  */
-export default async function QueryPage({ params }: PageProps) {
+export default async function QueryPage({ params, searchParams }: PageProps) {
   const { slug } = params;
+  const isFreshSearch = searchParams.fresh === "true";
+
+  // For fresh searches, use client-side rendering with animation
+  if (isFreshSearch) {
+    return (
+      <>
+        <Header minimal />
+        <main id="main-content" className="min-h-screen bg-background py-8">
+          <QueryPageClient slug={slug} />
+        </main>
+      </>
+    );
+  }
+
+  // For existing queries, use server-side rendering
   const data = await getQueryBySlug(slug);
 
   // Handle 404
