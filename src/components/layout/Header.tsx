@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface HeaderProps {
   minimal?: boolean;
@@ -11,9 +12,16 @@ export function Header({ minimal = false }: HeaderProps) {
         {/* Logo / Brand */}
         <Link
           href="/"
-          className="text-xl font-semibold text-primary hover:text-accent transition-colors"
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-          Deal Advisor
+          <Image
+            src="/logo.svg"
+            alt="Deal Advisor"
+            width={32}
+            height={32}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
 
         {/* Beta Badge */}

@@ -1,0 +1,23 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DealAdvisor Favicon">
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="url(#favGrad)"/>
+
+  <!-- Highlight -->
+  <circle cx="6" cy="6" r="10" fill="white" fill-opacity="0.08"/>
+
+  <!-- Magnifying glass circle -->
+  <circle cx="13.5" cy="13.5" r="6.5" stroke="white" stroke-width="2.2" fill="none"/>
+
+  <!-- Handle -->
+  <line x1="18.5" y1="18.5" x2="25" y2="25" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+
+  <!-- Checkmark -->
+  <path d="M10.5 13.5 L13 16 L17 10.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

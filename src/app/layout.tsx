@@ -59,6 +59,13 @@ export const metadata: Metadata = {
     // google: 'google-site-verification-code',
     // yandex: 'yandex-verification-code',
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export const viewport: Viewport = {
