@@ -109,3 +109,71 @@ export interface APIError {
   message: string;
   statusCode: number;
 }
+
+/**
+ * Search History Item (Backend Response - snake_case)
+ */
+export interface SearchHistoryItemRaw {
+  id: number;
+  original_query: string;
+  normalized_query: string;
+  slug: string;
+  query_type: string;
+  status: string;
+  created_at: string; // ISO 8601 timestamp
+  updated_at: string; // ISO 8601 timestamp
+}
+
+/**
+ * Search History Item (Frontend - camelCase)
+ */
+export interface SearchHistoryItem {
+  id: string;
+  query: string;
+  slug: string;
+  userId?: string;
+  createdAt: string; // ISO 8601 timestamp
+  updatedAt: string; // ISO 8601 timestamp
+}
+
+/**
+ * Search History Response (Backend - snake_case)
+ */
+export interface SearchHistoryResponseRaw {
+  userId: string;
+  searches: SearchHistoryItemRaw[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+/**
+ * Search History Response (Frontend - camelCase)
+ */
+export interface SearchHistoryResponse {
+  searches: SearchHistoryItem[];
+  total: number;
+  page: number;
+  limit: number;
+  hasMore: boolean;
+}
+
+/**
+ * Create Search Request
+ */
+export interface CreateSearchRequest {
+  query: string;
+  slug: string;
+  userId?: string; // Optional - backend generates if not provided
+}
+
+/**
+ * Create Search Response
+ */
+export interface CreateSearchResponse {
+  id: string;
+  query: string;
+  slug: string;
+  userId: string;
+  createdAt: string;
+}

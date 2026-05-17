@@ -33,7 +33,14 @@ export async function getQueryBySlug(
 /**
  * Create a new query search
  * Used in: Search form submission
+ *
+ * @param query - The search query text
+ * @param userId - Optional user ID for search history tracking
  */
-export async function createQuery(query: string): Promise<QueryResult> {
-  return apiPost<QueryResult>("/api/search", { query });
+export async function createQuery(
+  query: string,
+  userId?: string,
+): Promise<QueryResult> {
+  const payload = userId ? { query, userId } : { query };
+  return apiPost<QueryResult>("/api/search", payload);
 }

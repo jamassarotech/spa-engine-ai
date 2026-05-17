@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createQuery } from "@/lib/api/queries";
 import { deslugify } from "@/lib/utils/slugify";
+import { getUserId } from "@/lib/utils/userId";
 import { trackSearchComplete, trackError } from "@/lib/utils/analytics";
 import { SearchProgressAnimation } from "./SearchProgressAnimation";
 import { QueryHeader } from "./QueryHeader";
@@ -37,7 +38,8 @@ export function QueryPageClient({ slug, initialData }: QueryPageClientProps) {
       const fetchData = async () => {
         try {
           const queryText = deslugify(slug);
-          const result = await createQuery(queryText);
+          const userId = getUserId();
+          const result = await createQuery(queryText, userId);
           setData(result);
           setIsLoading(false);
 
