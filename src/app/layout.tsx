@@ -6,6 +6,8 @@ import { AnalyticsTracker } from "@/components/shared/AnalyticsTracker";
 import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://spa-engine-ai.vercel.app";
 
 export const metadata: Metadata = {
   title: {
@@ -41,14 +43,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001",
+    url: baseUrl,
     siteName: "Deal Advisor",
     title: "Deal Advisor | AI-powered buying research",
     description:
       "AI-powered buying research assistant. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
     images: [
       {
-        url: "/og-image.png",
+        url: `${baseUrl}/api/og`,
         width: 1200,
         height: 630,
         alt: "Deal Advisor - AI-powered buying research",
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
     description:
       "AI-powered buying research assistant. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
     creator: "@airesearch",
-    images: ["/og-image.png"],
+    images: [`${baseUrl}/api/og`],
   },
   verification: {
     // Add verification codes when available
