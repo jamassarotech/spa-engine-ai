@@ -15,6 +15,7 @@ export interface QueryResult {
   warnings: Warning[];
   quotes: Quote[];
   sources: Sources;
+  recommendations?: RecommendationProps[];
 }
 
 /**
@@ -176,4 +177,14 @@ export interface CreateSearchResponse {
   slug: string;
   userId: string;
   createdAt: string;
+}
+
+/***
+ * Recommendation to Buy Props
+ */
+export interface RecommendationProps {
+  amazonUrl: string;
+  name: string;
+  score: number;
+  summary: string;
 }

@@ -3,13 +3,13 @@
  */
 
 import type {
-  QueryMetadata,
   ProPoint,
   ConPoint,
   Warning,
   Quote,
   YouTubeSource,
   RedditSource,
+  RecommendationProps,
 } from "./api";
 
 /**
@@ -41,6 +41,10 @@ export interface ProsListProps {
  */
 export interface ConsListProps {
   cons: ConPoint[];
+}
+
+export interface RecommendationToBuyProps {
+  recommendations?: RecommendationProps[];
 }
 
 /**
