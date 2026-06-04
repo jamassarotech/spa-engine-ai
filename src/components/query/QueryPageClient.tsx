@@ -15,6 +15,7 @@ import { WarningsList } from "./WarningsList";
 import { QuotesSection } from "./QuotesSection";
 import { SourcesSection } from "./SourcesSection";
 import type { QueryResult } from "@/types/api";
+import { RecommendationToBuy } from "./RecomendationToBuy";
 
 interface QueryPageClientProps {
   slug: string;
@@ -105,8 +106,17 @@ export function QueryPageClient({ slug, initialData }: QueryPageClientProps) {
     return null;
   }
 
-  const { summary, metadata, pros, cons, warnings, quotes, sources } = data;
-
+  const {
+    summary,
+    metadata,
+    pros,
+    cons,
+    warnings,
+    quotes,
+    sources,
+    recommendations,
+  } = data;
+  console.log("Query result data:", data);
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Query Header */}
@@ -131,6 +141,9 @@ export function QueryPageClient({ slug, initialData }: QueryPageClientProps) {
 
       {/* Quotes */}
       <QuotesSection quotes={quotes} />
+
+      {/* Recommendation */}
+      <RecommendationToBuy recommendations={recommendations} />
 
       {/* Sources */}
       <SourcesSection
