@@ -30,6 +30,11 @@ export async function generateMetadata({
   const { slug } = params;
   const isFreshSearch = searchParams.fresh === "true";
 
+  // Get base URL for canonical links
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://spa-engine-ai.vercel.app";
+  const canonicalUrl = `${baseUrl}/q/${slug}`;
+
   // For fresh searches, return default metadata since data doesn't exist yet
   if (isFreshSearch) {
     const queryText = slug.replace(/-/g, " ");
@@ -37,6 +42,9 @@ export async function generateMetadata({
       title: `${queryText} | AI Research`,
       description: `Analyzing ${queryText} with AI-powered research from YouTube and Reddit sources.`,
       keywords: [queryText, "product research", "buying guide", "AI analysis"],
+      alternates: {
+        canonical: canonicalUrl,
+      },
     };
   }
 
@@ -64,6 +72,9 @@ export async function generateMetadata({
         "AI analysis",
         "reviews",
       ],
+      alternates: {
+        canonical: canonicalUrl,
+      },
       openGraph: {
         title: summary.title,
         description,

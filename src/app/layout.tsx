@@ -46,6 +46,14 @@ export const metadata: Metadata = {
     title: "Deal Advisor | AI-powered buying research",
     description:
       "AI-powered buying research assistant. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Deal Advisor - AI-powered buying research",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -53,6 +61,7 @@ export const metadata: Metadata = {
     description:
       "AI-powered buying research assistant. Get unbiased product reviews, comparisons, and recommendations from YouTube and Reddit.",
     creator: "@airesearch",
+    images: ["/og-image.png"],
   },
   verification: {
     // Add verification codes when available

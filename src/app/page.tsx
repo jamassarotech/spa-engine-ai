@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { SearchHero } from "@/components/home/SearchHero";
 import { Header } from "@/components/layout/Header";
 import { HistorySidebar } from "@/components/history/HistorySidebar";
@@ -6,6 +7,27 @@ import {
   generateOrganizationSchema,
   generateWebsiteSchema,
 } from "@/lib/utils/jsonLd";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical:
+      process.env.NEXT_PUBLIC_SITE_URL || "https://spa-engine-ai.vercel.app",
+  },
+  openGraph: {
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://spa-engine-ai.vercel.app",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Deal Advisor - AI-powered buying research",
+      },
+    ],
+  },
+  twitter: {
+    images: ["/og-image.png"],
+  },
+};
 
 export default function HomePage() {
   return (
