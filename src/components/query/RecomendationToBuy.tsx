@@ -23,35 +23,50 @@ export function RecommendationToBuy({
         We identified products that match your search. Use the links below to
         view available listings and customer reviews on Amazon.
       </p>
-      <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-hide md:mx-0 md:px-0 md:flex-col md:space-y-4 md:overflow-x-visible md:snap-none">
-        {sortedRecommendations.map((rec, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-full snap-start bg-white rounded-lg p-5 border border-green-200 hover:border-green-300 transition-colors shadow-sm"
-          >
-            <div className="flex items-start justify-between mb-2">
-              <h3 className="font-bold text-green-900 text-lg flex-1 line-clamp-2">
-                {rec.name}
-              </h3>
-              <Badge variant="success" className="ml-2 whitespace-nowrap">
-                Score: {rec.score}/100
-              </Badge>
+      <div className="relative group/carousel">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-hide md:mx-0 md:px-0 md:flex-col md:space-y-4 md:overflow-x-visible md:snap-none">
+          {sortedRecommendations.map((rec, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-full snap-start bg-white rounded-lg p-5 border border-green-200 hover:border-green-300 transition-colors shadow-sm"
+            >
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="font-bold text-green-900 text-lg flex-1 line-clamp-2">
+                  {rec.name}
+                </h3>
+                <Badge variant="success" className="ml-2 whitespace-nowrap">
+                  Score: {rec.score}/100
+                </Badge>
+              </div>
+
+              <p className="text-green-800 mb-4">{rec.summary}</p>
+
+              {rec.amazonUrl && (
+                <a
+                  href={rec.amazonUrl}
+                  className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on Amazon
+                </a>
+              )}
             </div>
+          ))}
+        </div>
 
-            <p className="text-green-800 mb-4">{rec.summary}</p>
+        {/* Visual Cues for Mobile */}
+        <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-green-50/80 to-transparent pointer-events-none md:hidden animate-pulse" />
 
-            {rec.amazonUrl && (
-              <a
-                href={rec.amazonUrl}
-                className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View on Amazon
-              </a>
-            )}
-          </div>
-        ))}
+        {/* Swipe Hint */}
+        <div className="flex justify-center gap-1.5 mt-2 md:hidden">
+          {sortedRecommendations.map((_, i) => (
+            <div
+              key={i}
+              className={`h-1 rounded-full transition-all ${i === 0 ? "w-4 bg-green-500" : "w-1 bg-green-200"}`}
+            />
+          ))}
+        </div>
       </div>
       <p className="text-green-900 text-xs mt-4">
         Engagement score from the source platform (Reddit upvotes or YouTube
