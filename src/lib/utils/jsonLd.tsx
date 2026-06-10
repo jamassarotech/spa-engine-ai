@@ -54,18 +54,21 @@ export function generateWebsiteSchema() {
  */
 export function generateArticleSchema(data: QueryResult, slug: string) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
+  const ogImageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(data.summary.title)}&type=query`;
 
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: data.summary.title,
     description: data.summary.verdict.slice(0, 200),
+    image: [ogImageUrl],
     url: `${baseUrl}/q/${slug}`,
     datePublished: data.metadata.lastUpdated,
     dateModified: data.metadata.lastUpdated,
     author: {
       "@type": "Organization",
       name: "Deal Advisor",
+      url: baseUrl,
     },
     publisher: {
       "@type": "Organization",
@@ -86,12 +89,16 @@ export function generateArticleSchema(data: QueryResult, slug: string) {
  * Generate Review JSON-LD for Query Pages
  */
 export function generateReviewSchema(data: QueryResult) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
+  const ogImageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(data.summary.title)}&type=query`;
+
   return {
     "@context": "https://schema.org",
     "@type": "Review",
     itemReviewed: {
       "@type": "Product",
       name: data.summary.title,
+      image: [ogImageUrl],
     },
     reviewBody: data.summary.verdict,
     reviewRating: {
@@ -107,7 +114,12 @@ export function generateReviewSchema(data: QueryResult) {
     },
     author: {
       "@type": "Organization",
-      name: "AI Research",
+      name: "Deal Advisor",
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Deal Advisor",
     },
     positiveNotes: {
       "@type": "ItemList",
