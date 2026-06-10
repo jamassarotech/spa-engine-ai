@@ -48,7 +48,7 @@ export function SearchBar({
       <form onSubmit={handleSubmit}>
         <div className="bg-background border-2 border-border rounded-2xl p-1 shadow-card max-w-3xl mx-auto flex items-center gap-2 hover:border-accent/30 focus-within:border-accent transition-colors">
           {/* Search Icon */}
-          <div className="pl-5 pr-3 text-secondary">
+          <div className="pl-3 sm:pl-5 pr-2 sm:pr-3 text-secondary">
             <svg
               className="w-5 h-5"
               fill="none"
@@ -80,7 +80,7 @@ export function SearchBar({
           <button
             type="submit"
             disabled={!query.trim() || isLoading}
-            className="bg-border-light text-secondary px-6 py-3 rounded-xl hover:bg-border disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium mr-1"
+            className="bg-accent text-white px-4 sm:px-6 py-3 rounded-xl hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium mr-1"
           >
             {isLoading ? "Searching..." : "Enter"}
           </button>

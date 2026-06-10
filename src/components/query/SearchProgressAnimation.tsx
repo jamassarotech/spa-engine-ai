@@ -73,7 +73,7 @@ export function SearchProgressAnimation({
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[400px] py-12">
+    <div className="flex flex-col items-center justify-center min-h-[400px] py-12 px-4 sm:px-6">
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center space-y-2">

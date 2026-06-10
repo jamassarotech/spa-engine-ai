@@ -23,17 +23,17 @@ export function RecommendationToBuy({
         We identified products that match your search. Use the links below to
         view available listings and customer reviews on Amazon.
       </p>
-      <div className="space-y-4">
+      <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-hide md:mx-0 md:px-0 md:flex-col md:space-y-4 md:overflow-x-visible md:snap-none">
         {sortedRecommendations.map((rec, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg p-5 border border-green-200 hover:border-green-300 transition-colors"
+            className="flex-shrink-0 w-[85vw] sm:w-[350px] md:w-full snap-start bg-white rounded-lg p-5 border border-green-200 hover:border-green-300 transition-colors shadow-sm"
           >
             <div className="flex items-start justify-between mb-2">
-              <h3 className="font-bold text-green-900 text-lg flex-1">
+              <h3 className="font-bold text-green-900 text-lg flex-1 line-clamp-2">
                 {rec.name}
               </h3>
-              <Badge variant="success" className="ml-2">
+              <Badge variant="success" className="ml-2 whitespace-nowrap">
                 Score: {rec.score}/100
               </Badge>
             </div>

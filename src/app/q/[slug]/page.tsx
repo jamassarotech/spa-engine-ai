@@ -61,7 +61,9 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: queryText,
         description: `AI-powered research on ${queryText}`,
-        images: [`${baseUrl}/api/og?title=${encodeURIComponent(queryText)}&type=query`],
+        images: [
+          `${baseUrl}/api/og?title=${encodeURIComponent(queryText)}&type=query`,
+        ],
       },
     };
   }
@@ -77,7 +79,7 @@ export async function generateMetadata({
       };
     }
 
-    const { summary, metadata } = data;
+    const { summary } = data;
     const description = `${summary.verdict.slice(0, 155)}...`;
 
     return {
@@ -110,7 +112,9 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: summary.title,
         description,
-        images: [`${baseUrl}/api/og?title=${encodeURIComponent(summary.title)}&type=query`],
+        images: [
+          `${baseUrl}/api/og?title=${encodeURIComponent(summary.title)}&type=query`,
+        ],
       },
     };
   } catch (error) {

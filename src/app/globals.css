@@ -9,10 +9,12 @@
 
   body {
     @apply bg-background text-primary antialiased;
+    overflow-x: hidden;
   }
 
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
 
   /* Focus visible styles for better keyboard navigation */

@@ -29,14 +29,14 @@ export function ExampleQueries() {
   };
 
   return (
-    <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-      <span className="text-secondary text-base">Try:</span>
+    <div className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+      <span className="text-secondary text-sm sm:text-base">Try:</span>
       {EXAMPLE_QUERIES.map((query) => (
         <button
           key={query}
           onClick={() => handleQueryClick(query)}
           disabled={loadingQuery !== null}
-          className="bg-transparent border border-border text-primary px-5 py-2.5 rounded-full text-base hover:border-accent hover:bg-subtle transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-transparent border border-border text-primary px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm sm:text-base hover:border-accent hover:bg-subtle transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loadingQuery === query ? "Loading..." : query}
         </button>
