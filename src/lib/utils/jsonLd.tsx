@@ -91,51 +91,40 @@ export function generateArticleSchema(data: QueryResult, slug: string) {
 export function generateReviewSchema(data: QueryResult) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001";
   const ogImageUrl = `${baseUrl}/api/og?title=${encodeURIComponent(data.summary.title)}&type=query`;
+  const ratingValue =
+    data.metadata.confidence === "high"
+      ? "5"
+      : data.metadata.confidence === "medium"
+        ? "4"
+        : "3";
 
   return {
     "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "Product",
-      name: data.summary.title,
-      image: [ogImageUrl],
+    "@type": "Product",
+    name: data.summary.title,
+    image: [ogImageUrl],
+    description: data.summary.verdict.slice(0, 200),
+    review: {
+      "@type": "Review",
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: ratingValue,
+        bestRating: "5",
+        worstRating: "1",
+      },
+      author: {
+        "@type": "Organization",
+        name: "Deal Advisor",
+        url: baseUrl,
+      },
+      reviewBody: data.summary.verdict,
     },
-    reviewBody: data.summary.verdict,
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue:
-        data.metadata.confidence === "high"
-          ? "5"
-          : data.metadata.confidence === "medium"
-            ? "4"
-            : "3",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: ratingValue,
+      reviewCount: "1",
       bestRating: "5",
       worstRating: "1",
-    },
-    author: {
-      "@type": "Organization",
-      name: "Deal Advisor",
-      url: baseUrl,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Deal Advisor",
-    },
-    positiveNotes: {
-      "@type": "ItemList",
-      itemListElement: data.pros.map((pro, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: pro.point,
-      })),
-    },
-    negativeNotes: {
-      "@type": "ItemList",
-      itemListElement: data.cons.map((con, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: con.point,
-      })),
     },
   };
 }
