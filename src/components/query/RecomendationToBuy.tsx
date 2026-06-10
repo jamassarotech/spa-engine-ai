@@ -1,10 +1,17 @@
+"use client";
+
+import { useRef, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { RecommendationToBuyProps } from "@/types/components";
 import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/utils/cn";
 
 export function RecommendationToBuy({
   recommendations,
 }: RecommendationToBuyProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   // Don't render if no recommendations
   if (!recommendations || recommendations.length === 0) {
     return null;
@@ -13,6 +20,18 @@ export function RecommendationToBuy({
   const sortedRecommendations = [...recommendations].sort(
     (a, b) => b.score - a.score,
   );
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+
+    const scrollPosition = scrollRef.current.scrollLeft;
+    const cardWidth = scrollRef.current.offsetWidth * 0.85; // Roughly 85vw
+    const newIndex = Math.round(scrollPosition / cardWidth);
+
+    if (newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
+    }
+  };
 
   return (
     <Card className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 mb-12">
@@ -24,7 +43,11 @@ export function RecommendationToBuy({
         view available listings and customer reviews on Amazon.
       </p>
       <div className="relative group/carousel">
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-hide md:mx-0 md:px-0 md:flex-col md:space-y-4 md:overflow-x-visible md:snap-none">
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-5 px-5 scrollbar-hide md:mx-0 md:px-0 md:flex-col md:space-y-4 md:overflow-x-visible md:snap-none"
+        >
           {sortedRecommendations.map((rec, index) => (
             <div
               key={index}
@@ -63,7 +86,10 @@ export function RecommendationToBuy({
           {sortedRecommendations.map((_, i) => (
             <div
               key={i}
-              className={`h-1 rounded-full transition-all ${i === 0 ? "w-4 bg-green-500" : "w-1 bg-green-200"}`}
+              className={cn(
+                "h-1 rounded-full transition-all duration-300",
+                activeIndex === i ? "w-4 bg-green-500" : "w-1 bg-green-200",
+              )}
             />
           ))}
         </div>
